@@ -76,10 +76,10 @@
 				</a>
 				<nav class="menu">
 					<ul class="clearfix">
-						<li><a href="#">关于</a></li>
-						<li><a href="#">技能</a></li>
+						<li><a href="#siteAbout">关于</a></li>
+						<li><a href="#siteSkills">技能</a></li>
 						<li>
-							<a  href="#"><span>作品</span></a>
+							<a  href="#siteWorks"><span>作品</span></a>
 							<ul class="submenu">
 								<li>作品1</li>
 								<li>作品2</li>
@@ -107,7 +107,7 @@
 			</div>
 		</div>
 		<main class="card">
-			<div class="userCard">
+			<div id="siteAbout" class="userCard">
 				<div class="pictureAndText clearfix">
 					<div class="picture">
 						<img src="./img/avatar.jpg" alt="头像">
@@ -122,14 +122,14 @@
 						<p>开发工程师</p>
 						<hr>
 						<dl>
-											<dt>年龄</dt>
-											<dd>18</dd>
-											<dt>所在城市</dt>
-											<dd>北京</dd>
-											<dt>邮箱</dt>
-											<dd>20225614@qq.com</dd>
-											<dt>手机</dt>
-											<dd>12345678</dd>
+							<dt>年龄</dt>
+							<dd>18</dd>
+							<dt>所在城市</dt>
+							<dd>北京</dd>
+							<dt>邮箱</dt>
+							<dd>20225614@qq.com</dd>
+							<dt>手机</dt>
+							<dd>12345678</dd>
 						</dl>
 					</div>
 				</div>		
@@ -172,7 +172,7 @@
 				Stng background in project management and customer relations.
 			</p>
 		</main>
-		<section class="skills">
+		<section id="siteSkills" class="skills">
 			<h2>技能</h2>
 			<ol class="clearfix">
 				<li>
@@ -213,7 +213,7 @@
 				</li>
 			</ol>
 		</section>
-		<section class="portfolio">
+		<section id="siteWorks" class="portfolio">
 			<h2>作品集合</h2>
 			<nav>
 				<ol class="clearfix">
@@ -269,12 +269,28 @@
 
 			//下拉菜单
 			let liTags = document.querySelectorAll(' nav.menu > ul >li ');
+
 			for(let i = 0 ;i<liTags.length; i++){
 				liTags[i].onmouseenter = function(x){
 					x.currentTarget.classList.add('active')
 				}
 				liTags[i].onmouseleave = function(x){
 					x.currentTarget.classList.remove('active')
+				}
+			}
+
+			//点击跳转
+			let aTags =document.querySelectorAll('nav.menu > ul > li > a')
+
+			for(let i = 0; i<aTags.length;i++){
+				aTags[i].onclick = function(x){
+					x.preventDefault()
+					let a = x.currentTarget
+					let href = a.getAttribute('href') //'#siteAbout'
+					let element = document.querySelector(href);
+					let top = element.offsetTop
+					console.log(top);
+					window.scrollTo(0, top - 80 )
 				}
 			}
 		</script>
