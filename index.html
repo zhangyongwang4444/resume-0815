@@ -26,7 +26,7 @@
   				margin : auto;
   				animation: s linear 1.5s infinite;
 		}
-			.loading::after{
+		.loading::after{
   				animation-delay:0.75s;
 		}
 		@keyframes s{
@@ -59,20 +59,36 @@
 	</head>
 
 	<body>
+
 		<div id="siteWelcome" class="site-welcome active">
 			<div class="loading"></div>
 		</div>
+
 		<div id="topNavBar" class="topNavBar">
 			<div class="topNavBar-inner clearfix">
 					<a href="#" class="logo">
 						<span class="rs">RS</span><span class="card">card</span>
 					</a>
-					<nav>
+					<nav class="menu">
 							<ul class="clearfix">
 									<li><a href="#">关于</a></li>
 									<li><a href="#">技能</a></li>
-									<li><a href="#">作品</a></li>
-									<li><a href="#">博客</a></li>
+									<li>
+										<a  href="#"><span>作品</span></a>
+										<ul class="submenu">
+											<li>作品1</li>
+											<li>作品2</li>
+											<li>作品3</li>
+										</ul>
+									</li>
+									<li>
+										<a  href="#">博客</a>
+										<ul class="submenu">
+											<li>博客1</li>
+											<li>博客2</li>
+											<li>博客3</li>
+										</ul>
+									</li>
 									<li><a href="#">日历</a></li>
 									<li><a href="#">联系方式</a></li>
 									<li><a href="#">其他</a></li>
@@ -233,9 +249,13 @@
 				}
 		</script>
 		<script>
+
+			//loading界面
 			setTimeout(function(){
 				siteWelcome.classList.remove('active');
 			},1500)
+
+			//会动的topNavBar
 			window.onscroll = function(xxx){
 				// console.log('用户在滚动');
 				// console.log(window.scrollY);
@@ -243,6 +263,17 @@
 					topNavBar.classList.add('sticky')
 				}else{
 					topNavBar.classList.remove('sticky')
+				}
+			}
+
+			//下拉菜单
+			let liTags = document.querySelectorAll(' nav.menu > ul >li ');
+			for(let i = 0 ;i<liTags.length; i++){
+				liTags[i].onmouseenter = function(x){
+					x.currentTarget.classList.add('active')
+				}
+				liTags[i].onmouseleave = function(x){
+					x.currentTarget.classList.remove('active')
 				}
 			}
 		</script>
