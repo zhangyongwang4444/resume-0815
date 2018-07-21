@@ -10,8 +10,8 @@
   				width:200px;
   				height:200px;
  			 	position:relative;
-}
-.loading::before,.loading::after{
+		}
+		.loading::before,.loading::after{
   				content:'';
  		 		position:absolute;
   				width:10px;
@@ -25,18 +25,18 @@
   				left:0;
   				margin : auto;
   				animation: s linear 1.5s infinite;
-}
+		}
 			.loading::after{
   				animation-delay:0.75s;
-}
-@keyframes s{
+		}
+		@keyframes s{
   			0%{
     			width:0px;height:0px; opacity:1;
  			 }
   			100%{
    				width:100px;height:100px;opacity:0;
  		 }
-}
+		}
 			.icon {
 			   width: 1em; height: 1em;
 			   vertical-align: -0.15em;
@@ -62,7 +62,7 @@
 		<div id="siteWelcome" class="site-welcome active">
 			<div class="loading"></div>
 		</div>
-		<div class="topNavBar ">
+		<div id="topNavBar" class="topNavBar">
 			<div class="topNavBar-inner clearfix">
 					<a href="#" class="logo">
 						<span class="rs">RS</span><span class="card">card</span>
@@ -236,6 +236,15 @@
 			setTimeout(function(){
 				siteWelcome.classList.remove('active');
 			},1500)
+			window.onscroll = function(xxx){
+				// console.log('用户在滚动');
+				// console.log(window.scrollY);
+				if(window.scrollY > 0){
+					topNavBar.classList.add('sticky')
+				}else{
+					topNavBar.classList.remove('sticky')
+				}
+			}
 		</script>
 	</body>
 </html>
