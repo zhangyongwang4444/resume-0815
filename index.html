@@ -4,7 +4,9 @@
 		<title>我的XX</title>
 		<link rel="stylesheet" type="text/css" href="main.css">
 		<!-- <link rel="stylesheet" href="loading.css"> -->
+
 		<script src="//at.alicdn.com/t/font_720742_x5c8142r1d.js"></script>
+
 		<style type="text/css">
 
 			/*loading界面*/
@@ -252,6 +254,7 @@
 					portfolioBar.className = 'bar state-3';
 				}
 		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
 		<script>
 			//loading界面
 			setTimeout(function(){
@@ -279,18 +282,50 @@
 				}
 			}
 
-			//点击跳转
-			let aTags =document.querySelectorAll('nav.menu > ul > li > a')
+		//点击跳转
+		let aTags =document.querySelectorAll('nav.menu > ul > li > a')
+
+		// Setup the animation loop.
+		function animate(time) {
+    		requestAnimationFrame(animate);
+    		TWEEN.update(time);
+		}
+		requestAnimationFrame(animate);
+
+
+		var coords = { x: 0}; 
+		var tween = new TWEEN.Tween(coords) 
+        .to({ x: 1000}, 1000) 
+        .easing(TWEEN.Easing.Quadratic.Out) 
+        .onUpdate(function() { 
+            console.log(coords.x)
+        })
+        .start(); 
 
 			for(let i = 0; i<aTags.length;i++){
 				aTags[i].onclick = function(x){
 					x.preventDefault()
-					let a = x.currentTarget
-					let href = a.getAttribute('href') //'#siteAbout'
-					let element = document.querySelector(href);
-					let top = element.offsetTop
-					console.log(top);
-					window.scrollTo(0, top - 80 )
+					// let a = x.currentTarget
+					// let href = a.getAttribute('href') //'#siteAbout'
+					// let element = document.querySelector(href);
+					// let top = element.offsetTop
+					let top = document.querySelector(x.currentTarget.getAttribute('href')).offsetTop
+					
+					let n = 25 //一共动多少次
+					let t = 500 / n //多长时间动一次
+					let currentTop = window.scrollY
+					let targetTop = top - 80 
+					let S = targetTop - currentTop
+					let s  = S / n
+					let i = 0 
+					let id = setInterval(()=>{
+						if(i === n){
+							window.clearInterval(id);
+							return
+						}
+						i = i + 1
+						window.scrollTo(0, currentTop + s * i)
+					},t)
 				}
 			}
 		</script>
