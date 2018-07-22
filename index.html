@@ -293,14 +293,7 @@
 		requestAnimationFrame(animate);
 
 
-		var coords = { x: 0}; 
-		var tween = new TWEEN.Tween(coords) 
-        .to({ x: 1000}, 1000) 
-        .easing(TWEEN.Easing.Quadratic.Out) 
-        .onUpdate(function() { 
-            console.log(coords.x)
-        })
-        .start(); 
+	
 
 			for(let i = 0; i<aTags.length;i++){
 				aTags[i].onclick = function(x){
