@@ -29,7 +29,7 @@ hr{
     clear: both;
 }
 [data-x].active{
-    outline: 10px solid red;
+    /*outline: 10px solid red;*/
 }
 .topNavBar{
    padding:20px 0px;
@@ -94,7 +94,8 @@ hr{
     display: block;
     position: relative;
 }
-nav > ul > li.active > a::after{
+nav > ul > li.active > a::after,
+nav > ul > li.highlight > a::after{
     /*border-bottom: 3px solid #e06567;*/
     content:'';
     display: block;
