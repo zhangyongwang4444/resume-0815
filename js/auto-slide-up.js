@@ -37,7 +37,6 @@
             brotherAndMe[i].classList.remove('highlight')
         }
         li.classList.add('highlight')
-        console.log(li);
     }
 }.call()
 

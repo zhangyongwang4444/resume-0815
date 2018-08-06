@@ -3,10 +3,10 @@
 
 <head>
 	<title>我的XX</title>
-
+	<script src="//at.alicdn.com/t/font_720742_x5c8142r1d.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<script src="//at.alicdn.com/t/font_720742_x5c8142r1d.js"></script>
+
 </head>
 
 <body>
@@ -174,25 +174,27 @@
 	</section>
 	<section data-x id="siteWorks" class="portfolio">
 		<h2>作品集合</h2>
-		<!-- Slider main container -->
-		<div class="swiper-container">
-			<!-- Additional required wrapper -->
-			<div class="swiper-wrapper">
-				<!-- Slides -->
-				<img src="./img/works/nav-page.jpg" class="swiper-slide">
-				<img src="./img/works/canvas.jpg" class="swiper-slide">
-				<img src="./img/works/apple-style-slides.jpg" class="swiper-slide">
+
+		<!--这就是view,用户看得见的界面-->
+		<div id="mySlides">
+			<!-- Slider main container -->
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<img src="./img/works/nav-page.jpg" class="swiper-slide">
+					<img src="./img/works/canvas.jpg" class="swiper-slide">
+					<img src="./img/works/apple-style-slides.jpg" class="swiper-slide">
+				</div>
+				<!-- If we need pagination -->
+				<div class="swiper-pagination"></div>
+
+				<!-- If we need navigation buttons -->
 			</div>
-			<!-- If we need pagination -->
-			<div class="swiper-pagination"></div>
-
-			<!-- If we need navigation buttons -->
-
-
-
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
 		</div>
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
+
 	</section>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
@@ -201,6 +203,7 @@
 	<script src="./js/auto-slide-up.js"></script>
 	<script src="./js/sticky-topbar.js"></script>
 	<script src="./js/smoothly-navigation.js"></script>
+	<script src="./js/selectMenu.js"></script>
 </body>
 
 </html>
