@@ -6,6 +6,23 @@ AV.init({
     appKey: APP_KEY
 });
 
+var query = new AV.Query('Message');
+query.find().then(function (messages) {
+    let array = messages.map((items) => items.attributes)
+    array.forEach((item) => {
+        let li = document.createElement('li')
+        li.innerText = item.content
+        let messageList = document.querySelector('#messageList')
+        messageList.appendChild(li)
+    })
+    // 成功获得实例
+    // todo 就是 id 为 57328ca079bc44005c2472d0 的 Todo 对象实例
+}, function (error) {
+    // 异常处理
+    
+})
+
+
 let myForm = document.querySelector('#postMessageForm')
 
 myForm.addEventListener('submit', function (e) {
@@ -16,9 +33,7 @@ myForm.addEventListener('submit', function (e) {
     message.save({
         'content': content
     }).then(function (object) {
-        alert('存入成功')
-        console.log('存入成功')
-        console.log(object)
+        window.location.reload()
     })
 })
 
