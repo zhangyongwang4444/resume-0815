@@ -1,5 +1,29 @@
 !function () {
-    var view = document.querySelector('#topNavBar')
+    var model = {
+        //获取数据
+        init: function () {
+            var APP_ID = 'hg9Xg2ojqCnRblDNUbxva3Ba-gzGzoHsz'
+            var APP_KEY = '1FfsrmfHjz0LmzNIseyLJHld'
+            AV.init({
+                appId: APP_ID,
+                appKey: APP_KEY
+            });
+        },
+
+        fetch: function () {
+            var query = new AV.Query('X')
+            return query.find() //Promise 对象 
+        },
+        //创建数据
+        save: function (name) {
+            var X = AV.Object.extend('X');
+            var x = new X();
+            return x.save({
+                'name': name
+            })                 //Promise 对象
+        }
+    }
+    var view = View('#topNavBar')
     var controller = {
         view: null,
         init: function (view) {
